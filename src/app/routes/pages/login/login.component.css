@@ -1,0 +1,29 @@
+/*.login{*/
+  /*background:url('../../../assets/img/bg/loginbg.jpg');*/
+  /*background-size: 100% 100%;*/
+  /**/
+  /*!*background-size:cover;*!*/
+/*}*/
+.login {
+  background:url('../../../../assets/img/bg/loginbg.jpg');
+  background-size: 100% 100%;
+  justify-content:center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  height: 100%;
+  width:100%;
+}
+
+.login-input {
+    z-index: 10;
+}
+
+.footer{
+  position: absolute;
+  width: 100%;
+  bottom: 0%;
+    z-index: 5;
+}
+
+

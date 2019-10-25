@@ -1,0 +1,54 @@
+@height : 48px;
+@width : 200px;
+
+app-passage-do {
+    [nz-form] {
+        margin-top: 32px;
+    }
+
+    nz-input:first-child {
+        transition: height 0.3s;
+        > input:first-child:focus {
+            height: @height !important;
+            font-size: 1.5em !important;
+            transition: height 0.3s;
+        }
+    }
+
+    div::after {
+        transition: 0.3s;
+    }
+
+    .title_focus {
+        div::after {
+            transition: 0.3s;
+            line-height: @height !important;
+            height: @height !important;
+            width: @height !important;
+            font-size: 1.5em !important;
+        }
+    }
+
+    .avatar-uploader,
+    .avatar-uploader-trigger,
+    .avatar {
+        width: 150px;
+        height: 150px;
+        display: block;
+    }
+
+    .avatar-uploader {
+        display: block;
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .avatar-uploader-trigger {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 28px;
+        color: #999;
+    }
+
+}

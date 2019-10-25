@@ -1,0 +1,69 @@
+<div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="24" style="background: #ECECEC;padding:30px;">
+        <nz-spin [nzSize]="'large'" [nzSpinning]="load">
+            <nz-card [nzBordered]="false">
+                <ng-template #body>
+                    <form nz-form nzType="horizontal">
+                        <div nz-row [nzGutter]="16">
+                            <div nz-col [nzMd]="8" [nzXs]="24">
+                                <div nz-form-item nz-row>
+                                    <div nz-form-label nz-col [nzXs]="4">
+                                        <label>类别</label>
+                                    </div>
+                                    <div nz-form-control nz-col [nzXs]="20">
+                                        <div class="has-expand" [class.expanded]="!isCollapse">
+                                            <nz-checkable-tag [nzChecked]="all" (nzChange)="selectAll($event)"> 全选
+                                            </nz-checkable-tag>
+                                            <nz-checkable-tag *ngFor="let pasType of pasTypes; let index = index;"
+                                                              [nzChecked]="pasType?.check"
+                                                              (nzChange)="handChange($event,index)">
+                                                {{pasType?.pasTypeText}}
+                                            </nz-checkable-tag>
+                                            <a class="trigger" (click)="toggleCollapse()">
+                                                展开
+                                                <i class="anticon" [class.anticon-down]="isCollapse"
+                                                   [class.anticon-up]="!isCollapse"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="mb-sm row justify-content-between">
+                                <button nz-button [nzType]="'primary'" (click)="add()">
+                                    <i class="anticon anticon-plus"></i>
+                                    <span>写博文</span>
+                                </button>
+                                <button nz-button [nzType]="'primary'" (click)="get()">
+                                    <i class="anticon anticon-sync"></i>
+                                    <span>刷新</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </nz-card>
+            <nz-card *ngIf="!passages || passages?.length<1">
+                <ng-template #body>
+                    <nz-alert nzType="info" nzMessage="提示" nzDescription="还没有添加文章" nzShowIcon></nz-alert>
+                </ng-template>
+            </nz-card>
+            <ng-container *ngIf="passages && passages?.length>0">
+                <div *ngFor="let passage of passages ; let index = index;">
+                    <app-word-list [passage]="passage" (update)="update($event)"
+                                   (delete)="delete($event)"></app-word-list>
+                </div>
+            </ng-container>
+            <div class="card">
+                <div class="card-body ">
+                    <nz-pagination [(nzPageIndex)]="ser.pageInfoSev.pageInfo.currPage"
+                                    (nzPageIndexChange) ="get()"
+                                   [nzTotal]="ser.pageInfoSev.pageInfo.totalCount "
+                                   [nzPageSize]="ser.pageInfoSev.pageInfo.pageSize " nzShowQuickJumper
+                                   nzShowTotal></nz-pagination>
+                </div>
+            </div>
+        </nz-spin>
+    </div>
+</div>

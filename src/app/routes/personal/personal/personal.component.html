@@ -1,0 +1,41 @@
+<div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="24">
+        <nz-spin [nzSize]="'large'" [nzSpinning]="load">
+            <nz-card [nzBordered]="false">
+                <ng-template #body>
+                    <div nz-row [nzGutter]="16" nzType="flex" nzJustify="center" class="mt-lg">
+                        <div nz-col [nzMd]="8" [nzXs]="24" *ngIf="!personal">
+                            <button nz-button [nzType]="'dashed'" nzGhost class="card text-blue" (click)="add()">
+                                <i class="anticon anticon-plus"></i>
+                                <span>录入个人信息</span>
+                            </button>
+                        </div>
+                        <div nz-col [nzMd]="16" [nzXs]="24" *ngIf="personal">
+                            <div class="i-card">
+                                <img [src]="personal?.image">
+                                <div class="profile">
+                                    <h1 class="i-main">{{personal.onlineName}}</h1>
+                                    <ul class="i-list">
+                                        <li>{{personal.profession}}</li>
+                                        <li>{{personal?.qq}}</li>
+                                        <li>{{personal?.email}}</li>
+                                    </ul>
+                                </div>
+                                <div class="footer">
+                                    <button nz-button [nzType]="'primary'" (click)="edit()">
+                                        <i class="anticon anticon-edit"></i>
+                                        <span>修改</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="container mt-lg">
+                                <app-html-view *ngIf="personal?.desc" [HTML]="personal?.desc"></app-html-view>
+                                <app-html-view *ngIf="personal?.resume" [HTML]="personal?.resume"></app-html-view>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </nz-card>
+        </nz-spin>
+    </div>
+</div>

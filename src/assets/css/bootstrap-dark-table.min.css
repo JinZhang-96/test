@@ -1,0 +1,64 @@
+.bootstrap-table .table {
+ border-bottom:1px solid #4D617A;
+}
+.fixed-table-container {
+ border:1px solid #4D617A;
+ color:white;
+}
+.fixed-table-header {
+ border-bottom:1px solid #4D617A
+}
+.fixed-table-footer {
+ border-top:1px solid #4D617A
+}
+.fixed-table-container thead th {
+ border-left:1px solid #4D617A
+}
+.fixed-table-container tbody td {
+ border-left:1px solid #4D617A
+}
+.fixed-table-container tbody .selected td {
+ background-color:black
+}
+.bootstrap-table .table>thead>tr>th {
+ vertical-align:bottom;
+ border-bottom:1px solid #4D617A
+}
+.bootstrap-table .table>tbody>tr>td {
+ border-bottom:1px solid #4D617A
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+ background-color:rgb(0,32,57);
+}
+.table-hover>tbody>tr:hover {
+ background-color:gray;
+}
+.example-title{
+	color:white;
+}
+/*翻页选择显示多少条记录下拉框样式*/
+.btn-default{
+	background-color:transparent;
+	border-color:#4D617A
+}
+.dropdown-menu{
+	background-color:#4D617A;
+	border-color:#4D617A
+}
+/*右边翻页控件样式*/
+.pagination > li > a, .pagination > li > span,.pagination > active{
+	background-color:transparent;
+	border:1px solid #4D617A
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{
+	
+	background-color:transparent;
+	border:1px solid #4D617A
+}
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+    color: white;
+    cursor: not-allowed;
+	background-color:transparent;
+	border:1px solid #4D617A
+}

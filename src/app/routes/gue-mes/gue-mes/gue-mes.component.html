@@ -1,0 +1,96 @@
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="24">
+        <nz-card>
+            <ng-template #body>
+                <div class="container">
+                    <div class="mb-sm row justify-content-between">
+                        <button nz-button [nzType]="'primary'" [disabled]="inlineTable.isSave" (click)="inlineTable.add()">
+                            <i class="anticon anticon-plus"></i>
+                            <span>添加</span>
+                        </button>
+                        <nz-input (keyup)="inlineTable.select($event)" [nzType]="'search'" [nzSize]="'large'" nzPlaceHolder="搜索" style="width: 200px;"></nz-input>
+                        <button nz-button [nzType]="'primary'" (click)="inlineTable.load()">
+                            <i class="anticon anticon-sync"></i><span>刷新</span>
+                        </button>
+                    </div>
+                </div>
+                <div nz-form [formGroup]="inlineTable.form">
+                    <nz-table class="center-table" [nzAjaxData]="inlineTable.controls.getRawValue()" [nzShowSizeChanger]="true" [nzLoading]="inlineTable.loading" [(nzPageSize)]="inlineTable.pageInfoService.pageInfo.pageSize" [nzTotal]="inlineTable.pageInfoService.pageInfo.totalCount" [(nzPageIndex)]="inlineTable.pageInfoService.pageInfo.currPage" (nzPageIndexChange)="inlineTable.load()" (nzPageSizeChange)="inlineTable.loadTimeout()" [nzShowTotal]="true" [nzBordered]="true" [nzShowQuickJumper]="true">
+                        <thead nz-thead>
+                            <tr>
+                                <th nz-th>
+                                    <span>序号</span>
+                                </th>
+                                <th nz-th>
+                                    <span>游客MAC</span>
+                                </th>
+                                <th nz-th>
+                                    <span>留言</span>
+                                </th>
+                                <th nz-th>
+                                    <span>留言日期</span>
+                                </th>
+                                <th nz-th><span>操作</span></th>
+                            </tr>
+                        </thead>
+                        <tbody nz-tbody formArrayName="controls">
+                            <tr nz-tbody-tr *ngFor="let data of inlineTable.controls.controls; let index = index" [formGroupName]="index">
+                                <td nz-td><span>{{index+1}}</span></td>
+                                <td nz-form-item nz-td>
+                                    <span *ngIf="inlineTable.editIndex!== index">{{data.value.gueMac}}</span>
+                                    <span *ngIf="inlineTable.editIndex === index" nz-form-control nzHasFeedback [nzValidateStatus]="data.controls.gueMac">
+                        <nz-input formControlName="gueMac"
+                                  nzPlaceHolder="游客MAC"
+                                  nzSize="large"></nz-input>
+                                    <div nz-form-explain *ngIf="data.controls.gueMac.invalid">
+                                    {{inlineTable.formErrors[index].gueMac}}
+                                </div>
+                        </span>
+                                </td>
+                                <td nz-form-item nz-td>
+                                    <span *ngIf="inlineTable.editIndex!== index">{{data.value.gueMes}}</span>
+                                    <span *ngIf="inlineTable.editIndex === index" nz-form-control nzHasFeedback [nzValidateStatus]="data.controls.gueMes">
+                        <nz-input formControlName="gueMes"
+                                  nzPlaceHolder="留言"
+                                  nzSize="large"></nz-input>
+                                    <div nz-form-explain *ngIf="data.controls.gueMes.invalid">
+                                    {{inlineTable.formErrors[index].gueMes}}
+                                </div>
+                        </span>
+                                </td>
+                                <td nz-form-item nz-td>
+                                    <span *ngIf="inlineTable.editIndex!== index">{{data.value.gueDate}}</span>
+                                    <span *ngIf="inlineTable.editIndex === index" nz-form-control nzHasFeedback [nzValidateStatus]="data.controls.gueDate">
+                        <nz-input formControlName="gueDate"
+                                  nzPlaceHolder="留言日期"
+                                  nzSize="large"></nz-input>
+                                    <div nz-form-explain *ngIf="data.controls.gueDate.invalid">
+                                    {{inlineTable.formErrors[index].gueDate|_date:'YYYY年MM月DD日'}}
+                                </div>
+                        </span>
+                                </td>
+                                <td nz-td>
+                                    <span *ngIf="inlineTable.editIndex!==index">
+                        <button nz-button (click)="inlineTable.edit(index)">编辑</button>
+                        <span nz-table-divider></span>
+                                    <nz-popconfirm (nzOnConfirm)="inlineTable.del(data.controls.gueMesId.value)" nzTitle="是否要删除此行？">
+                                        <button nz-button [nzType]="'danger'" nz-popconfirm>删除</button>
+                                    </nz-popconfirm>
+                                    </span>
+                                    <span *ngIf="inlineTable.editIndex===index">
+                        <button nz-button (click)="inlineTable.save(index)" [disabled]="data.invalid" type="button"
+                        >保存</button>
+                        <span nz-table-divider></span>
+                                    <nz-popconfirm (nzOnConfirm)="inlineTable.cancel(index)" nzTitle="是否要取消操作？">
+                                        <button nz-button nz-popconfirm e>取消</button>
+                                    </nz-popconfirm>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>

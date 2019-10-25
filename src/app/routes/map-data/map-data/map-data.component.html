@@ -1,0 +1,43 @@
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="24">
+        <nz-card>
+            <ng-template #body>
+                <div style="background-color: #00192E;">
+                    <div nz-row [nzGutter]="24">
+                        <div nz-col [nzSpan]="18">
+                            <table id="tableList"></table>
+                        </div>
+                        <div nz-col [nzSpan]="6">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label style="color:white;">关键字</label>
+                                    <input type="text" class="form-control" id="keyWord">
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:white;">省</label>
+                                    <select class="form-control m-b" id="provinceName">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:white;">地区</label>
+                                    <select class="form-control m-b" id="areaName">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:white;">数量</label>
+                                    <input type="text" class="form-control" id="number" value="50">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" id="btnSearchData"><strong>查询数据</strong>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" id="btnExportData" style="margin-left:20px;"><strong>导出数据</strong>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>

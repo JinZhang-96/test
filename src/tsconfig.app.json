@@ -1,0 +1,45 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./",
+        "module": "es2015",
+        "types": [],
+        "paths": {
+            "@shared": [
+                "app/shared"
+            ],
+            "@shared/*": [
+                "app/shared/*"
+            ],
+            "@core": [
+                "app/core/"
+            ],
+            "@core/*": [
+                "app/core/*"
+            ],
+            "@services": [
+                "app/services"
+            ],
+            "@services/*": [
+                "app/services/*"
+            ],
+            "@animations": [
+                "app/animations"
+            ],
+            "@animations/*": [
+                "app/animations/*"
+            ],
+            "@auth": [
+                "app/auth"
+            ],
+            "@auth/*": [
+                "app/auth/*"
+            ]
+        }
+    },
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts"
+    ]
+}

@@ -1,0 +1,80 @@
+<div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="24">
+        <nz-spin [nzSize]="'large'" [nzSpinning]="load">
+            <form nz-form [formGroup]="form">
+                <div nz-form-item nz-row [nzGutter]="8">
+                    <div nz-col nz-form-label [nzSm]="6" [nzXs]="4">
+                        <label for="onlineName" nz-form-item-required>网名</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" [nzXs]="20" [nzValidateStatus]="form.controls.onlineName" nzHasFeedback>
+                        <nz-input formControlName="onlineName" nzPlaceHolder="网名" [nzSize]="'large'"></nz-input>
+                        <div nz-form-explain *ngIf="(form.controls.onlineName.invalid && form.controls['onlineName'].dirty)" class="has-error">
+                            <span *ngIf="form.controls.onlineName.errors.required"> 必填选项 </span>
+                        </div>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col nz-form-label [nzSm]="6" [nzXs]="4">
+                        <label for="profession" nz-form-item-required>职业</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" [nzXs]="20" [nzValidateStatus]="form.controls.profession" nzHasFeedback>
+                        <nz-input formControlName="profession" nzPlaceHolder="职业" [nzSize]="'large'"></nz-input>
+                        <div nz-form-explain *ngIf="(form.controls.profession.invalid && form.controls['profession'].dirty)" class="has-error">
+                            <span *ngIf="form.controls.profession.errors.required"> 必填选项 </span>
+                        </div>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col nz-form-label [nzSm]="6" [nzXs]="4">
+                        <label for="qq">QQ</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" [nzXs]="20" [nzValidateStatus]="form.controls.qq" nzHasFeedback>
+                        <nz-input formControlName="qq" nzPlaceHolder="QQ" [nzSize]="'large'"></nz-input>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col nz-form-label [nzSm]="6" [nzXs]="4">
+                        <label for="email">邮箱</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" [nzXs]="20" [nzValidateStatus]="form.controls.email" nzHasFeedback>
+                        <nz-input formControlName="email" nzPlaceHolder="邮箱" [nzSize]="'large'"></nz-input>
+                        <div nz-form-explain *ngIf="(form.controls.email.invalid && form.controls['email'].dirty)" class="has-error">
+                            <span *ngIf="form.controls.email.errors.email"> 请输入正确邮箱格式 </span>
+                        </div>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col nz-form-label  [nzSpan]="false" >
+                        <label for="desc">自我介绍</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="24" [nzValidateStatus]="form.controls.desc" nzHasFeedback>
+                        <app-rich-editor formControlName="desc"></app-rich-editor>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col nz-form-label [nzSpan]="false"  >
+                        <label for="resume">简历</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="24" [nzValidateStatus]="form.controls.resume" nzHasFeedback>
+                        <app-rich-editor formControlName="resume"></app-rich-editor>
+                    </div>
+                </div>
+                <div nz-form-item nz-row>
+                    <div nz-col nz-form-label [nzSm]="6" [nzXs]="4">
+                        <label>头像</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" [nzXs]="20" [nzValidateStatus]="form.controls.image" nzHasFeedback class="d-flex justify-content-center">
+                        <nz-upload class="avatar-uploader"  nzAccept="image/*" [nzAction]="url" nzName="images" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
+                            <i *ngIf="!avatarUrl" class="anticon anticon-plus avatar-uploader-trigger"></i>
+                            <img *ngIf="avatarUrl" [src]="avatarUrl" class="avatar">
+                        </nz-upload>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <div nz-col [nzOffset]="7" [nzSpan]="12" nz-form-control>
+                    <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="submitForm()" [disabled]="form.invalid">提交</button>
+                </div>
+            </div>
+        </nz-spin>
+    </div>

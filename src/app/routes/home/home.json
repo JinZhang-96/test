@@ -1,0 +1,22 @@
+{
+    "home":
+    {
+        "title": "主页",
+        "h1": "权限后台管理",
+        "table":
+        {
+            "OS": "操作系统",
+            "JDK": "JDK版本",
+            "sessionId": "会话ID",
+            "sessionNum": "会话总数",
+            "IP": "服务器IP地址",
+            "MAC": "服务器物理地址",
+            "serve": "服务器",
+            "servePath": "服务器文件路径",
+            "OSAccount": "当前用户",
+            "loginTime": "登陆时间",
+            "languageText": "当前语言",
+            "languageCode": "当前语言代码"
+        }
+    }
+}

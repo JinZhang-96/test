@@ -1,0 +1,11 @@
+<form [formGroup]="vImgForm">
+    <div class="row" [formGroup]="vImgForm">
+        <div class=" col-xl-10 col-lg-12 offset-xl-1 input-group">
+            <input formControlName="vefCode" [ngClass]="{'is-invalid': formErrors.vefCode && formDirtys.vefCode  ,'is-valid': !formErrors.vefCode && formDirtys.vefCode  }" appValidateEqual={{picTxt}} type="text" class="form-control" required [(ngModel)]="vefCode" (input)="onInput()" placeholder="验证码">
+            <canvas class="vef" height="38px" width="100%" (click)="drawPic()"></canvas>
+        </div>
+    </div>
+    <div *ngIf="formErrors.vefCode" class="col-xl-10 col-lg-12 offset-xl-1 has-error">
+        {{formErrors.vefCode}}
+    </div>
+</form>

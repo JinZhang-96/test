@@ -1,0 +1,59 @@
+<div class="login">
+    <!-- [@flyInTop] -->
+    <div class="col-md-6 login-input">
+        <div class=" card border-info">
+            <div class="card-header text-center bg-info">
+                <h1 class="card-title font-weight-normal">个人博客后台</h1>
+            </div>
+            <form role="form" (ngSubmit)="login()" novalidate [formGroup]="userForm">
+                <div class="card-body bg-secondary">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-12 offset-xl-1 input-group">
+                                <div class=" icon-user  input-group-addon" title="person" aria-hidden="true"></div>
+                                <input formControlName="account"
+                                       [ngClass]="{'is-invalid': formErrors.account && formDirtys.account ,'is-valid': !formErrors.account  && formDirtys.account}"
+                                       type="text" class="form-control" placeholder="账号：admin">
+                            </div>
+                        </div>
+                        <div *ngIf="formErrors.account" class="col-xl-10 col-lg-12 offset-xl-1 has-error"
+                        >
+                            {{ formErrors.account }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class=" col-xl-10 col-lg-12 offset-xl-1 input-group">
+                                <div class=" icon-lock input-group-addon" title="person" aria-hidden="true"></div>
+                                <input formControlName="password"
+                                       [ngClass]="{'is-invalid': formErrors.password && formDirtys.password ,'is-valid': !formErrors.password  && formDirtys.password}"
+                                       type="password" class="form-control" placeholder="密码:123456">
+                            </div>
+                        </div>
+                        <div *ngIf="formErrors.password" class="col-xl-10 col-lg-12 offset-xl-1 has-error"
+                        >
+                            {{ formErrors.password }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <app-verify-img (valid)="onValidImg($event)"></app-verify-img>
+                    </div>
+                    <div *ngIf="formErrors.formError" class="col-xl-10 col-lg-12 offset-xl-1 has-error text-center">
+                        {{ formErrors.formError}}
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-secondary">
+                    <button nz-button [nzType]="'primary'" [nzSize]="'large'" type="submit"
+                            [disabled]="userForm.invalid || !verify" [nzLoading]="isLoad">
+                       登陆
+                    </button>
+                    <button nz-button type="reset" [nzSize]="'large'">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="fixed-bottom">
+        <app-footer-info></app-footer-info>
+    </footer>
+
+</div>

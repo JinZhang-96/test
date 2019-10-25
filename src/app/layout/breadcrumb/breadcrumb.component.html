@@ -1,0 +1,9 @@
+<h1>
+        <nz-breadcrumb [nzSeparator]="'>'" class="ant-breadcrumb__last-item-no-bold">
+            <nz-breadcrumb-item *ngFor="let breadcrumb of  breadcrumbService.getBreadcrumb() ; last as isLast">
+                <i [class]="breadcrumb.icon"></i>
+                <a *ngIf="!isLast" [routerLink]="breadcrumb.url" routerLinkActive="" class="nav-sub-title"> {{breadcrumb.text}}</a>
+                <span *ngIf="isLast"  class="nav-sub-title"> {{breadcrumb.text}}</span>
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+</h1>
