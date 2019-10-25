@@ -1,4 +1,4 @@
-export const data = [
+export const data: any[] = [
     { "code": "110000", "parentCode": "0", "level": "1", "name": "北京市", "latitude": "39.929986", "longitude": "116.395645" },
     { "code": "110100", "parentCode": "110000", "level": "2", "name": "市辖区", "latitude": "", "longitude": "" },
     { "code": "110101", "parentCode": "110100", "level": "3", "name": "东城区", "latitude": "39.938574", "longitude": "116.421885" },

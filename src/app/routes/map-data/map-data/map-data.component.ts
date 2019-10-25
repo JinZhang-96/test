@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {InlineTableService} from '@services/table/inline.table.service';
 import {Validators} from '@angular/forms';
 import {MapDataService} from './map-data.service';
@@ -8,18 +8,18 @@ import {MapDataService} from './map-data.service';
     styleUrls: ['./map-data.component.less'],
     providers: [MapDataService]
 })
-export class MapDataComponent implements OnInit, OnAfterViewInit {
+export class MapDataComponent implements OnInit, AfterViewInit {
    
   
     constructor(private service: MapDataService) {        
     }
 
     ngOnInit() {
-      // this.load()
+      
     }
 
     ngAfterViewInit() {
-        this.load()
+      this.load()
     }
    
     load() {        

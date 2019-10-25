@@ -1,7 +1,21 @@
 import {Injectable} from '@angular/core';
 import {_HttpClient} from '@core/services/http.client';
-import  * as areasData from '../../../../assets/js/area.js'
-
+import  * as areasData from '../../../../assets/js/area'
+ const format = function(y, val: Date) {
+        var z = {
+            M: val.getMonth() + 1,
+            d: val.getDate(),
+            h: val.getHours(),
+            m: val.getMinutes(),
+            s: val.getSeconds()
+        };
+        y = y.replace(/(M+|d+|h+|m+|s+)/g, function(v) {
+            return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1))).slice(-2);
+        });
+        return y.replace(/(y+)/g, function(v) {
+            return val.getFullYear().toString().slice(-v.length);
+        });
+    };
 
 
 
@@ -108,7 +122,7 @@ export class MapDataService {
                     }
                 });
                 $("#btnExportData").click(() => {
-                    var fileName = "地图采集信息_" + new Date().format('yyyyMMddhhmmss');
+                    var fileName = "地图采集信息_" + format('yyyyMMddhhmmss', new Date()) ;
                     $('#tableList').bootstrapTable('togglePagination');
                     $('#tableList').tableExport({
                         fileName: fileName,
